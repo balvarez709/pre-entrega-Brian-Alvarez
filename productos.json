@@ -1,0 +1,65 @@
+[
+  {
+    "id": 1,
+    "title": "Producto 1",
+    "description": "Descripción 1",
+    "price": 20.99,
+    "thumbnail": "imagen1.jpg",
+    "code": "ABC123",
+    "stock": 50
+  },
+  {
+    "title": "Nuevo Producto",
+    "description": "Nueva Descripción",
+    "price": 25.99,
+    "thumbnail": "nueva_imagen.jpg",
+    "code": "DEF456",
+    "stock": 60,
+    "id": 2
+  },
+  {
+    "id": 4,
+    "title": "Producto 4",
+    "description": "Descripción 4",
+    "price": 15.49,
+    "thumbnail": "imagen2.jpg",
+    "code": "XYZ781",
+    "stock": 30
+  },
+  {
+    "id": 5,
+    "title": "Producto 5",
+    "description": "Descripción 5",
+    "price": 15.49,
+    "thumbnail": "imagen2.jpg",
+    "code": "XYZ783",
+    "stock": 30
+  },
+  {
+    "id": 6,
+    "title": "Guitarra",
+    "description": "Guitarra criolla",
+    "price": 30.99,
+    "thumbnail": "imagen1.jpg",
+    "code": "ABC125",
+    "stock": 5
+  },
+  {
+    "id": 7,
+    "title": "Ukelele",
+    "description": "Ukelele criollo",
+    "price": 30.99,
+    "thumbnail": "imagen4.jpg",
+    "code": "ABC160",
+    "stock": 5
+  },
+  {
+    "id": 8,
+    "title": "Ukelele",
+    "description": "Ukelele criollo",
+    "price": 30.99,
+    "thumbnail": "imagen4.jpg",
+    "code": "ABC160",
+    "stock": 5
+  }
+]
