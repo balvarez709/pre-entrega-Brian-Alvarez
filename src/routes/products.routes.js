@@ -61,10 +61,11 @@ router.post('/', async (req, res) => {
 router.put('/:pid',async (req,res) =>{
     try{
         const id = req.params.pid
-        const product = products.getProductById(id);
+        const body = req.body
+        console.log(body)
             return res.json({
                 ok: true,
-                updatedProduct: await products.updateProduct(id,product),
+                updatedProduct: await products.updateProduct(id,body),
             });
     } catch (error) {
             return res.status(404).json({
@@ -75,9 +76,20 @@ router.put('/:pid',async (req,res) =>{
 })
 
 //DELETE
-router.delete('delete/:pid',async (req,res) =>{
-
-})
+router.delete('/delete/:pid', async (req, res) => {
+    try {
+        const id = req.params.pid;
+        return res.json({
+            ok: true,
+            deleteProduct: await products.deleteProduct(id),
+        });
+    } catch (error) {
+        return res.status(404).json({
+            ok: false,
+            message: error.message 
+        });
+    }
+});
 
 module.exports = router
 

@@ -52,14 +52,5 @@
     "thumbnail": "imagen4.jpg",
     "code": "ABC160",
     "stock": 5
-  },
-  {
-    "id": 8,
-    "title": "Ukelele",
-    "description": "Ukelele criollo",
-    "price": 30.99,
-    "thumbnail": "imagen4.jpg",
-    "code": "ABC160",
-    "stock": 5
   }
 ]

@@ -21,16 +21,6 @@ class ProductManager {
         //this.loadProductsFromFile();
     }
 
-    //  async loadProductsFromFile() {
-    //      try {
-    //          const data = await fs.readFile(this.path, 'utf-8');
-    //          this.products = JSON.parse(data);
-    //      } catch (error) {
-    //          // Si hay un error (por ejemplo, el archivo no existe), simplemente dejamos el arreglo vacío
-    //          this.products = [];
-    //      }
-    //  }
-
     async saveProductsToFile(obj) {
         try {
             const data = JSON.stringify(obj,null,2);
@@ -40,30 +30,17 @@ class ProductManager {
         }
     }
 
-    // async addProduct({title, description, price, thumbnail, code, stock}) {
-    //     return new Promise(async (resolve, reject) => {
-    //         // Validoque todos los campos sean obligatorios
-    //         const products = await this.getProducts()
-    //         if (!title || !description || !price || !thumbnail || !code || !stock) {
-    //             reject("Todos los campos son obligatorios.");
-    //             return;
+    // async readJSONFile(path) {
+    //     try {
+    //         const data = await fs.readFile(path, 'utf-8');
+    //         if (!data.trim()) {
+    //             // Si el archivo está vacío, devolver un array vacío
+    //             return [];
     //         }
-
-    //         // Valido que el campo "code" no se repita
-    //         if (products.some(product => product.code === code)) {
-    //             reject("El código ya existe. Debe ser único.");
-    //             return;
-    //         }
-
-    //         // Creo un nuevo producto y lo agregamos al arreglo
-    //         const newProduct = new Product(title, description, price, thumbnail, code, stock);
-    //         products.push(newProduct);
-
-    //         // Guardo los productos actualizados en el archivo
-    //         await this.saveProductsToFile(products);
-
-    //         resolve(`Producto '${title}' agregado con éxito. ID: ${newProduct.id}`);
-    //     });
+    //         return JSON.parse(data);
+    //     } catch (error) {
+    //         throw new Error(`Error al leer el archivo ${path}: ${error.message}`);
+    //     }
     // }
 
     async addProduct({ title, description, price, thumbnail, code, stock }) {
@@ -126,28 +103,27 @@ class ProductManager {
         });
     }
 
-    async updateProduct(id, updatedProduct) {
-        return new Promise(async (resolve, reject) => {
-            const products = await this.getProducts()
-            const index = products.findIndex(product => product.id === Number(id));
-            if (index !== -1) {
-                updatedProduct.id = products[index].id;
-                products[index] = { ...products[index], ...updatedProduct };
-                // Guardo los productos actualizados en el archivo
-                await this.saveProductsToFile(products);
+     async updateProduct(id, updatedProduct) {
+         return new Promise(async (resolve, reject) => {
+             const products = await this.getProducts()
+             const index = products.findIndex(product => product.id === Number(id));
+             if (index !== -1) {
+                 products[index] = { ...products[index], ...updatedProduct };
+                 // Guardo los productos actualizados en el archivo
+                 await this.saveProductsToFile(products);
 
-                resolve(`Producto con ID ${id} actualizado con éxito.`);
-            } else {
-                reject("Producto no encontrado. No se pudo actualizar.");
-            }
-        });
-    }
+                 resolve(`Producto con ID ${id} actualizado con éxito.`);
+             } else {
+                 reject("Producto no encontrado. No se pudo actualizar.");
+             }
+         });
+     }
 
     async deleteProduct(id) {
         return new Promise(async (resolve, reject) => {
             const products = await this.getProducts()
-            const index = products.findIndex(product => product.id === id);
-
+            const index = products.findIndex(product => product.id === Number(id));
+            console.log(index)
             if (index !== -1) {
                 const deletedProduct = products.splice(index, 1)[0];
 

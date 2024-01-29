@@ -12,6 +12,7 @@ app.use(express.urlencoded({extended:true}));
 
 //products app
 app.use(`/${API_PREFIX}/products`, productsRoutes);
+app.use(`/${API_PREFIX}/carts`, cartsRoutes);
 
 //carts routes
 // app.get(`${API_PREFIX}/carts`,(req, res) => {
