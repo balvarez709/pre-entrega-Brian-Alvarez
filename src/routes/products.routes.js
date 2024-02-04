@@ -6,20 +6,26 @@ const pathDB = 'productos.json'
 const products = new ProductManager(pathDB)
 
 //products routes
+// router.get('/',async (req, res) => {
+//     try {
+//         return res.json({
+//             ok: true,
+//             productos: await products.getProducts(), 
+//         })
+//     } catch (error) {
+//         return res.status(404).json({
+//             ok: false,
+//             message: error
+//         });
+//     }
+// })
 router.get('/',async (req, res) => {
-    try {
-        return res.json({
-            ok: true,
-            productos: await products.getProducts(),
-        })
-    } catch (error) {
-        return res.status(404).json({
-            ok: false,
-            message: error
-        });
-    }
+    res.render("index",{})
 })
 
+router.get("/",(req,res)=>{
+    res.render("index",{})
+})
 
 // POST /api/products/:pid
 router.get('/:pid', async (req, res) => {
